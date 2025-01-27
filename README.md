@@ -79,7 +79,7 @@ To get regions the `cheap_mobile` datasource appeared in, run:
 
 ![alt text](images/analytics5.png)
 
-*(PS: All queries related to above analysis can be found at [analytics/src/queries/](analytics/src/queries/)!)*
+*(PS: All queries related to above analysis can be found at [analytics/src/queries/](analytics/src/queries/))*
 
 ## Stress Test
 
@@ -101,7 +101,7 @@ Since we are using a distributed data processing technology (Apache Spark™), t
 
 ## Cloud Deployment
 
-Since we are using a containerized solution, we can use clound managed Kubernets service, such as Amazon Elastic Kubernetes Service (EKS). Additionally, we can adapt the application to run on an Amazon EMR cluster.
+Since we are using a containerized solution, we can use a cloud managed Kubernets service, such as Amazon Elastic Kubernetes Service (EKS). Additionally, we can adapt the application to run on an Amazon EMR cluster.
 
 For the database, we can use a managed data warehouse service such as Amazon Redshift. Since Redshift is based on PostgreSQL, it shares similar features.
 
