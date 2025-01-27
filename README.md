@@ -104,3 +104,5 @@ Since we are using a distributed data processing technology (Apache Spark™), t
 Since we are using a containerized solution, we can use clound managed Kubernets service, such as Amazon Elastic Kubernetes Service (EKS). Additionally, we can adapt the application to run on an Amazon EMR cluster.
 
 For the database, we can use a managed data warehouse service such as Amazon Redshift. Since Redshift is based on PostgreSQL, it shares similar features.
+
+Also, we can use an AWS S3 bucket to store the source CSV files.
