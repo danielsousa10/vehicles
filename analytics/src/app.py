@@ -72,5 +72,5 @@ main.add_command(select_latest_datasource)
 main.add_command(select_regions_cheap_mobile)
 
 if __name__ == "__main__":
-    logging.info("Initializing appication...")
+    logging.info("Initializing application...")
     main()
