@@ -1,0 +1,51 @@
+services:
+  spark:
+    build:
+      context: ./ingester
+      dockerfile: Dockerfile
+    container_name: spark-container
+    command: /opt/spark/bin/spark-submit --driver-class-path /opt/spark/work-dir/jars/postgresql-42.7.5.jar /opt/spark/work-dir/ingester/app.py
+    depends_on:
+      - postgres
+    networks:
+      - vehicles-network
+    volumes:
+      - ./data:/opt/spark/work-dir/data
+      - ./log:/opt/spark/work-dir/log
+      - ./ingester/src:/opt/spark/work-dir/ingester
+    env_file:
+      - .env
+    environment:
+      - PIPELINE_NAME="Vehicles Data Pipeline"
+      - FILES_PATH=/opt/spark/work-dir/data
+  
+  analytics:
+    build:
+      context: ./Analytics
+      dockerfile: Dockerfile
+    container_name: analytics-container
+    depends_on:
+      - postgres
+    networks:
+      - vehicles-network
+    volumes:
+      - ./log:/analytics/log
+    env_file:
+      - .env
+
+  postgres:
+    image: postgres:12.22
+    restart: unless-stopped
+    container_name: postgres
+    hostname: postgres
+    env_file:
+      - .env
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./database/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - vehicles-network
+
+networks:
+  vehicles-network:
